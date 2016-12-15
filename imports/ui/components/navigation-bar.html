@@ -1,0 +1,17 @@
+<template name="navigation">
+  {{#if show_nav}}
+    <nav>
+      <a id="nav_first" class="nav_btns" href="">&lt;&lt; first</a>
+      <a id="nav_prev" class="nav_btns" href="">|&lt; prev</a>
+      <input id="page_number" type="text" value="{{page_no}}"><span>of {{ total_pages }}</span>    
+      <a id="nav_next" class="nav_btns" href="">next &gt;|</a>
+      <a id="nav_last" class="nav_btns" href="">last &gt;&gt;</a>
+    </nav>
+
+  {{else}}
+    <span>No need for nav</span> <br/>
+  {{/if}}
+
+  <span>Display</span><input id="display_items" type="text" value="{{items_display}}"><span> at a time</span>
+  <br/>
+</template>

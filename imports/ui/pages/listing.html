@@ -1,0 +1,22 @@
+<template name="app_Listing">
+  {{#if Template.subscriptionsReady}}
+    {{#if getStudyLists}}
+        <table>
+          {{#each elem in getStudyLists}}
+            <tr>
+              <td>{{elem.studyField}}</td>
+              <td>{{elem.startDate}}</td>
+              <td>{{elem.startMonth}}</td>
+              <td>{{elem._id}}</td>
+              <td>{{elem.filler}}</td>
+            </tr>
+          {{/each}}
+        </table>
+    {{else}}
+      <span>Nothing to display</span>
+    {{/if}}
+  {{else}}
+    <span>...Loading</span>
+  {{/if}}
+
+</template>

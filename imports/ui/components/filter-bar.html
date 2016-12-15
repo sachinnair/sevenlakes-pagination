@@ -1,0 +1,16 @@
+<template name="filter">
+  <div>
+    <select id="study_fields" multiple>
+      <option value="" disabled>Choose multiple study fields</option>
+      {{#each fields in study_fields}}
+      <option>s{{fields}}</option>
+      {{/each}}
+    </select>
+    <select id="start_month" name="">
+      <option value="" selected>Choose a month</option>
+      {{#each opt in month_options}}
+      <option value="{{opt.month_number}}">{{opt.month_name}}</option>
+      {{/each}}
+    </select>
+  </div>
+</template>
