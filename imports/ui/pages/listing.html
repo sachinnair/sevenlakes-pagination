@@ -1,7 +1,7 @@
 <template name="app_Listing">
   {{#if Template.subscriptionsReady}}
     {{#if getStudyLists}}
-        <table class="table-striped" >
+        <table class="table table-striped" >
           <tbody>
             {{#each elem in getStudyLists}}
               <tr>
@@ -9,7 +9,7 @@
                 <td>{{elem.startDate}}</td>
                 <td>{{elem.startMonth}}</td>
                 <td>{{elem._id}}</td>
-                <td> <div class="truncate">{{elem.filler}} </div> </td>
+                <td> <div class="truncate">{{elem.filler}} </div><a>More</a> </td>
               </tr>
             {{/each}}
           </tbody>

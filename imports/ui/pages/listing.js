@@ -14,10 +14,7 @@ Template.app_Listing.onCreated(function (){
   this.getStudyField = ()=> FlowRouter.getQueryParam('sf');
   this.pageLimit = ()=> FlowRouter.getQueryParam('pl');
 
-  this.autorun((a,b,c,d,e,f,g) => {
-    debugger;
-    console.log(Counts.get('studylists'))
-    console.log("Autorun fired");
+  this.autorun(() => {
     this.subscribe('studyLists', this.getPageNo(), this.getStartMonth(), this.getStudyField(), this.pageLimit());
   })
 })
@@ -27,8 +24,14 @@ Template.app_Listing.helpers({
     _PageCount.set(Counts.get('studylists'));
     var lists = StudyLists.find({}).fetch();
     return lists;
-  },
-  getStudy: ()=> {
-    return 's2'; 
+  }
+});
+
+Template.app_Listing.events({
+  'click a': function(evt, tmpl){
+    // Toggle class to show entire text
+    $(evt.target).siblings('div').toggleClass('truncate');
+    let showText = $(evt.target).siblings('div').hasClass('truncate') ? 'More' : 'Less' ;
+    $(evt.target).html(showText);
   }
 });
