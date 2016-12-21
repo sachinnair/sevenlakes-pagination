@@ -6,13 +6,20 @@ import './filter-bar.html'
 Template.filter.onCreated(function(){
 })
 
+Template.filter.onRendered(function(){
+  let filteredStartMonth = FlowRouter.getQueryParam('sm');
+  if(filteredStartMonth)
+    this.$('#start_month').val(parseInt(filteredStartMonth));
+})
+
 Template.filter.helpers({
   month_options: function(){
     var currentMonth = (new Date()).getMonth();
     var month_range = []; i=0;
 
-    while (i < 12)
-      month_range.push((currentMonth + i) >= 12 ? (currentMonth - 12 + i++) : currentMonth + i++)
+    const MONTHS_IN_AN_YEAR = 12;
+    while (i < MONTHS_IN_AN_YEAR)
+      month_range.push((currentMonth + i) >= MONTHS_IN_AN_YEAR ? (currentMonth - MONTHS_IN_AN_YEAR + i++) : currentMonth + i++)
     
 
     return month_range.map(function(x){
