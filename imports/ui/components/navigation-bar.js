@@ -3,11 +3,13 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import {Template} from 'meteor/templating';
 
+import { DEFAULT_PAGE_LIMIT } from '../../startup/both/constants.js';
+
 export const _PageCount = new ReactiveVar(0);
 
 Template.navigation.onCreated(function(){
-  this.items_display = new ReactiveVar(20);
-  this.totalPages = new ReactiveVar(100);
+  this.items_display = new ReactiveVar(DEFAULT_PAGE_LIMIT);
+  this.totalPages = new ReactiveVar(0);
   this.autorun(()=>{
     this.totalPages.set(Math.ceil(_PageCount.get() / this.items_display.get()));
   })

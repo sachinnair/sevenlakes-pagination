@@ -4,6 +4,7 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import { StudyLists } from '../../api/studyLists/studyLists.js';
 import './listing.html';
+import './listing.css';
 
 import { _PageCount } from '../components/navigation-bar.js';
 

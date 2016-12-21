@@ -14,6 +14,3 @@ StudyLists.schema = new SimpleSchema({
 });
 
 StudyLists.attachSchema(StudyLists.schema);
-
-
-

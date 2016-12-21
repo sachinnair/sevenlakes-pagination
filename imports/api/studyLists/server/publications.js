@@ -3,6 +3,8 @@ import { Counts } from 'meteor/tmeasday:publish-counts';
 
 import { StudyLists } from '../studyLists.js';
 
+import { DEFAULT_PAGE_LIMIT } from '../../../startup/both/constants.js';
+
 function getStudyFieldFilter(studyField){
 
       var boolean_string = parseInt(studyField,10).toString(2)
@@ -26,7 +28,7 @@ Meteor.publish('studyLists', function getStudyLists(pageNo, startMonth, studyFie
       filterObject.studyField = {$in: getStudyFieldFilter(studyField) }
     }
 
-    var page_limit = pageLimit != null ? parseInt(pageLimit) : 10;
+    var page_limit = pageLimit != null ? parseInt(pageLimit) : DEFAULT_PAGE_LIMIT;
 
     Counts.publish(this, 'studylists', StudyLists.find(filterObject), {noReady: true });
     return StudyLists.find(filterObject, { skip: page_limit * (parseInt(pageNo)-1), limit: page_limit});
